@@ -1,0 +1,5 @@
+providers:
+  - Ugarit\Pao\Ugarit\ServiceProvider
+
+workbench:
+  install: true

@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Tests\Ugarit;
+
+use Orchestra\Testbench\TestCase as BaseTestCase;
+
+class TestCase extends BaseTestCase
+{
+    protected function setUp(): void
+    {
+        unset($_SERVER['AI_AGENT'], $_SERVER['PAO_DISABLE'], $_SERVER['PAO_FORCE'], $_SERVER['CLAUDE_CODE'], $_SERVER['CLAUDECODE']);
+        putenv('CLAUDE_CODE');
+        putenv('CLAUDECODE');
+        putenv('PAO_DISABLE');
+        putenv('PAO_FORCE');
+
+        parent::setUp();
+    }
+
+    /**
+     * @return list<class-string>
+     */
+    protected function getPackageProviders($app): array
+    {
+        return [];
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function ignorePackageDiscoveriesFrom(): array
+    {
+        return ['ugarit/pao'];
+    }
+}

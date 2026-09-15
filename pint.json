@@ -1,0 +1,10 @@
+{
+    "preset": "ugarit",
+    "exclude": [
+        "playground-ugarit",
+        "playground-symfony"
+    ],
+    "rules": {
+        "Pint/phpdoc_type_annotations_only": true
+    }
+}

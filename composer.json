@@ -1,0 +1,105 @@
+{
+    "name": "ugarit/pao",
+    "description": "Agent-optimized output for PHP testing tools",
+    "keywords": [
+        "php",
+        "ai",
+        "phpunit",
+        "pest",
+        "paratest",
+        "phpstan",
+        "rector",
+        "agent",
+        "testing",
+        "dev"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/ugarit/pao/issues",
+        "source": "https://github.com/ugarit/pao"
+    },
+    "authors": [
+        {
+            "name": "Muath R Abu Ouda",
+            "email": "muathrabuouda@hotmail.com",
+            "role": "Vision Leader of Ugarit"
+        },
+        {
+            "name": "Taylor Otwell",
+            "email": "taylor@laravel.com",
+            "role": "Original Creator & Primary Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "ugarit/agent-detector": "^1.00.00"
+    },
+    "require-dev": {
+        "brianium/paratest": "^7.20.0",
+        "ugarit/pint": "^1.00.00",
+        "orchestra/testbench": "^10.11.0 || ^11.2.0",
+        "pestphp/pest": "^4.7.8 || ^5.1.4",
+        "pestphp/pest-plugin-type-coverage": "^4.0.4 || ^5.0.2",
+        "phpstan/phpstan": "^2.2.13",
+        "rector/rector": "^2.6.6",
+        "symfony/process": "^7.4.13 || ^8.1.6",
+        "symfony/var-dumper": "^7.4.15 || ^8.1.6"
+    },
+    "conflict": {
+        "ugarit/framework": "<12.0.0",
+        "nunomaduro/collision": "<8.9.3",
+        "phpunit/phpunit": "<12.5.23 || >=13.0.0 <13.1.7 || >=14.0.0",
+        "pestphp/pest": "<4.6.3 || >=6.0.0"
+    },
+    "autoload": {
+        "files": [
+            "src/Autoload.php"
+        ],
+        "psr-4": {
+            "Ugarit\\Pao\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "ugarit": {
+            "providers": [
+                "Ugarit\\Pao\\Ugarit\\ServiceProvider"
+            ]
+        },
+        "pest": {
+            "plugins": [
+                "Ugarit\\Pao\\Drivers\\Pest\\Plugin"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "lint": "pint",
+        "refactor": "rector",
+        "test:type-coverage": "pest --type-coverage --min=100",
+        "test:lint": "pint --test",
+        "test:unit": "pest --parallel --coverage --exactly=100",
+        "test:types": "phpstan",
+        "test:refactor": "rector --dry-run",
+        "test": [
+            "@test:refactor",
+            "@test:lint",
+            "@test:type-coverage",
+            "@test:types",
+            "@test:unit"
+        ]
+    },
+    "version": "1.00.00"
+}
